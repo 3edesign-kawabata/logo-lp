@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロゴデザイン｜スリーイーデザイン</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --white: #f8f6f2;
+    --gray: #888;
+    --accent: #888888;
+    --line: #d8d4cc;
+    --text: #333;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    line-height: 1.9;
+    overflow-x: hidden;
+  }
+
+  /* ======= HERO ======= */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 10vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'LOGO';
+    position: absolute;
+    right: -2vw;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28vw;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--accent);
+    margin-bottom: 48px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-contrast {
+    margin-top: 40px;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: var(--gray);
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+    line-height: 2;
+  }
+
+  .hero-contrast em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.1s forwards;
+  }
+
+  .hero-sub .en {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--accent);
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: block;
+  }
+
+  .hero-sub .ja {
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    color: var(--gray);
+    display: block;
+    margin-top: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 48px;
+    left: 10vw;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gray);
+    opacity: 0;
+    animation: fadeUp 1s ease 1.4s forwards;
+  }
+
+  .scroll-line {
+    width: 56px;
+    height: 1px;
+    background: var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    animation: slideLine 2s ease infinite;
+  }
+
+  /* ======= SECTION BASE ======= */
+  section {
+    padding: 100px 10vw;
+    border-top: 1px solid var(--line);
+  }
+
+  .s-num {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  .s-heading {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.55;
+    margin-bottom: 32px;
+  }
+
+  /* ======= 01 比較 ======= */
+  .compare-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .compare-col {
+    padding: 48px 40px;
+  }
+
+  .compare-col.other {
+    background: #eeebe5;
+  }
+
+  .compare-col.yours {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .compare-col h3 {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .compare-col.yours h3 {
+    color: var(--accent);
+  }
+
+  .compare-col ul {
+    list-style: none;
+  }
+
+  .compare-col ul li {
+    font-size: 0.875rem;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .compare-col.yours ul li {
+    border-bottom-color: rgba(255,255,255,0.08);
+    color: #bbb;
+  }
+
+  /* ======= 02 ヒアリング ======= */
+  .hearing-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
+    margin-top: 48px;
+  }
+
+  .hearing-block h3 {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .hearing-block p {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 2;
+  }
+
+  /* ======= 03 哲学 ======= */
+  .philosophy {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .philosophy .s-num { color: var(--accent); }
+
+  .philosophy-body {
+    max-width: 680px;
+  }
+
+  .phil-p {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    font-weight: 400;
+    line-height: 2.1;
+    color: #ddd;
+  }
+
+  .phil-p + .phil-p {
+    margin-top: 32px;
+  }
+
+  .phil-p em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ======= 04 白黒 ======= */
+  .bw-lead {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.65;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  .bw-lead span {
+    display: block;
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    color: var(--gray);
+    margin-top: 16px;
+    line-height: 1.9;
+  }
+
+  .bw-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .bw-item {
+    padding: 28px 24px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .bw-item:nth-child(odd) {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .bw-item:nth-child(even) {
+    background: #eeebe5;
+    color: var(--black);
+  }
+
+  .bw-item strong {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* ======= 05 コンサル ======= */
+  .consult-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .consult-left p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 2.1;
+  }
+
+  .consult-left p + p {
+    margin-top: 24px;
+  }
+
+  .consult-right {
+    background: #eeebe5;
+    padding: 40px 36px;
+  }
+
+  .consult-right h3 {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .role-list {
+    list-style: none;
+  }
+
+  .role-list li {
+    font-size: 0.875rem;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    line-height: 1.8;
+    color: var(--text);
+    display: flex;
+    gap: 12px;
+  }
+
+  .role-list li:last-child {
+    border-bottom: none;
+  }
+
+  .role-label {
+    font-weight: 700;
+    color: var(--black);
+    min-width: 48px;
+    font-size: 0.8rem;
+  }
+
+  /* ======= CTA ======= */
+  .cta-section {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 140px 10vw;
+    border-top: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .cta-section p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 56px;
+    line-height: 1.9;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 18px 64px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+  }
+
+  .cta-btn:hover {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  /* ======= FOOTER ======= */
+  footer {
+    padding: 32px 10vw;
+    border-top: 1px solid #222;
+    background: var(--black);
+    color: #444;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ======= ANIMATIONS ======= */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideLine {
+    0% { left: -100%; }
+    50% { left: 0; }
+    100% { left: 100%; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  .consult-body-single {
+    max-width: 640px;
+    margin-top: 48px;
+  }
+
+
+  /* ======= PRICE ======= */
+  .price-section {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .price-section .s-num { color: var(--accent); }
+
+  .price-lead {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: #aaa;
+    line-height: 2;
+    max-width: 560px;
+    margin-bottom: 64px;
+    font-weight: 300;
+  }
+
+  .price-list {
+    list-style: none;
+    max-width: 640px;
+  }
+
+  .price-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 28px 0;
+    border-bottom: 1px solid #2a2a2a;
+    gap: 24px;
+  }
+
+  .price-list li:first-child {
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .price-name {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .price-amount {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .price-heading {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--white);
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+
+  .price-note {
+    margin-top: 32px;
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.9;
+  }
+
+
+  /* ======= WORKS ======= */
+  .works-section {}
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .works-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+  }
+
+  .works-item-label {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: var(--gray);
+    letter-spacing: 0.15em;
+  }
+
+  @media (max-width: 768px) {
+    .works-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ======= APPLE風調整 ======= */
+  body {
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  section {
+    padding: 120px 12vw;
+  }
+
+  .hero {
+    padding: 120px 12vw 100px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+  }
+
+  .s-heading {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .phil-p {
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 2;
+  }
+
+  .compare-col h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .hearing-block h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 1.15rem;
+  }
+
+  .bw-lead {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .cta-section h2 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 768px) {
+    section { padding: 72px 6vw; }
+    .compare-wrap { grid-template-columns: 1fr; }
+    .hearing-blocks { grid-template-columns: 1fr; gap: 40px; }
+    .bw-list { grid-template-columns: 1fr 1fr; }
+    .consult-body { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label">スリーイーデザイン — LOGO WORKS</span>
+  <h1>
+    想いのないロゴに<br>
+    意味はない。
+  </h1>
+  <p class="hero-contrast">
+    <em>あなたのためのロゴ</em>か<br>
+    誰かのために作ったロゴか。
+  </p>
+  <div class="hero-sub">
+    <span class="en">Design is subtraction.</span>
+    <span class="ja">デザインは、引き算だ。</span>
+  </div>
+  <div class="scroll-hint">
+    <span class="scroll-line"></span>
+    SCROLL
+  </div>
+</section>
+
+<!-- 01 比較 -->
+<section>
+  <span class="s-num reveal">01 — あなたのためか、誰かのためか</span>
+  <h2 class="s-heading reveal">
+    テンプレートやAIのロゴは<br>
+    誰かのために作られたものだ。
+  </h2>
+  <div class="compare-wrap reveal">
+    <div class="compare-col other">
+      <h3>誰かのために作ったロゴ</h3>
+      <ul>
+        <li>テンプレート・AIから選ぶだけ</li>
+        <li>ヒアリングなし、または最小限</li>
+        <li>誰にでも合う＝誰にも刺さらない</li>
+        <li>白黒で使えるか確認されていない</li>
+        <li>名刺・看板・刺繍で再現できないことも</li>
+        <li>「なんとなくいい感じ」で終わる</li>
+      </ul>
+    </div>
+    <div class="compare-col yours">
+      <h3>あなたのためのロゴ<br><small style="font-size:0.75rem;color:#888;">— スリーイーデザインの場合</small></h3>
+      <ul>
+        <li>あなたの想いをとことん聞く</li>
+        <li>黄金比・白銀比で設計図を引く</li>
+        <li>白黒で成立することを前提に設計する</li>
+        <li>名刺・看板・刺繍・Webへの展開を想定</li>
+        <li>「なぜこの形か」を全部説明できる</li>
+        <li>「この形じゃなきゃダメ」になるまで悩む</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ヒアリング -->
+<section>
+  <span class="s-num reveal">02 — ヒアリングという設計</span>
+  <h2 class="s-heading reveal">
+    関係ない話も<br>めっちゃします。
+  </h2>
+  <div class="hearing-blocks">
+    <div class="hearing-block reveal">
+      <h3>雑談の中に、核がある。</h3>
+      <p>
+        昔の話、好きな食べ物、なぜこの仕事を始めたか。<br>
+        一見関係なさそうな話の中に<br>
+        そのお店・その会社の「核」が入っています。<br>
+        それを引き出すことが、ロゴ設計の第一歩です。
+      </p>
+    </div>
+    <div class="hearing-block reveal">
+      <h3>似合うかどうかは<br>あなたが決める。</h3>
+      <p>
+        派手が好きな人がいる。シンプルが好きな人がいる。<br>
+        どちらが正解ということはない。<br>
+        好みを無視したロゴは、あなたのロゴじゃない。<br>
+        あなたの「好き」を軸に、方向性を決めます。
+      </p>
+    </div>
+    <div class="hearing-block reveal">
+      <h3>設計図を引く。</h3>
+      <p>
+        ロゴタイプ（文字）とシンボルマーク（図形）を<br>
+        それぞれ設計します。<br>
+        黄金比・白銀比など、比率を計算して形を決める。<br>
+        感覚ではなく、根拠のある形を作ります。
+      </p>
+    </div>
+    <div class="hearing-block reveal">
+      <h3>最後は、引き算する。</h3>
+      <p>
+        希望に寄り添っていくと、要素が増えていきます。<br>
+        削り続けた先に
+        本当の形が見えてくる。<br>
+        長く残るロゴは、シンプルです。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 02.5 ロゴの構造 -->
+<section>
+  <span class="s-num reveal">02.5 — ロゴの構造を知っていますか</span>
+  <h2 class="s-heading reveal">
+    シンボルマーク＋ロゴタイプ＝ロゴマーク。<br>
+    意外と知られていない話です。
+  </h2>
+  <div class="hearing-blocks reveal">
+    <div class="hearing-block">
+      <h3>シンボルマーク</h3>
+      <p>
+        図形・アイコンのパートです。<br>
+        言葉がなくても、そのブランドを象徴する形。<br>
+        これだけで認識されるようになれば<br>
+        ロゴとして一人前です。
+      </p>
+    </div>
+    <div class="hearing-block">
+      <h3>ロゴタイプ</h3>
+      <p>
+        社名・店名などの文字のパートです。<br>
+        書体・字間・太さひとつで<br>
+        印象は大きく変わります。<br>
+        フォントをそのまま使うのとは、別物です。
+      </p>
+    </div>
+    <div class="hearing-block">
+      <h3>ロゴマーク</h3>
+      <p>
+        シンボルマークとロゴタイプを<br>
+        組み合わせたものです。<br>
+        この2つのバランスと配置が<br>
+        ロゴ全体の完成度を左右します。
+      </p>
+    </div>
+    <div class="hearing-block">
+      <h3>なぜ重要か</h3>
+      <p>
+        構造を理解して設計されたロゴは<br>
+        名刺でも、看板でも、Webでも<br>
+        どこに置いても崩れません。<br>
+        構造のないロゴは、使う場面を選びます。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 哲学 -->
+<section class="philosophy">
+  <span class="s-num">03 — デザインの哲学</span>
+  <div class="philosophy-body">
+    <p class="phil-p reveal">
+      デザインは、もう<em>出尽くしています。</em><br>
+      何かに似てしまうことは、避けられない。
+    </p>
+    <p class="phil-p reveal">
+      だからこそ、<em>意味と価値</em>を乗せる。<br>
+      色と形と意味が重なったとき<br>
+      はじめてオリジナルが生まれます。
+    </p>
+    <p class="phil-p reveal">
+      デザイナーは、芸術家ではない。<br>
+      エゴを捨てて<br>
+      <em>お客様の想いをカタチにする</em>のが仕事です。
+    </p>
+  </div>
+</section>
+
+<!-- 04 白黒 -->
+<section>
+  <span class="s-num reveal">04 — ロゴは、まず白黒で。</span>
+  <p class="bw-lead reveal">
+    本物のロゴは、白黒でも成立する。
+    <span>コーポレートカラー・イメージカラーと
+ロゴの色は別物です。<br>
+    鮮やかな背景に、白いロゴ。<br>
+    それだけで、世界が変わる。</span>
+  </p>
+  <div class="bw-list reveal">
+    <div class="bw-item">
+      <strong>まず白黒で設計</strong>
+      形だけで成立するロゴを作る
+    </div>
+    <div class="bw-item">
+      <strong>カラー展開</strong>
+      白黒が決まれば、カラーは自然に広がる
+    </div>
+    <div class="bw-item">
+      <strong>カラーデータのみで納品</strong>
+      使える場面が限られることがある
+    </div>
+    <div class="bw-item">
+      <strong>白黒＋カラーで納品</strong>
+      どんな場面でも迷わず使える
+    </div>
+  </div>
+</section>
+
+<!-- 05 コンサル -->
+<section>
+  <span class="s-num reveal">05 — デザインはコンサルです。</span>
+  <h2 class="s-heading reveal">
+    ロゴができ、名刺ができ<br>
+    ホームページができる。
+  </h2>
+  <div class="consult-body-single">
+    <div class="consult-left reveal">
+      <p>
+        バラバラな人が作ると、まとまりがない。<br>
+        ロゴから名刺、Webまでぼくが一緒に育てます。
+      </p>
+      <p>
+        エンジニアはコードが得意。<br>
+        ぼくは、あなたの話を聞くことが得意。<br>
+        苦手なことは得意な人に任せる。<br>
+      </p>
+      <p>
+        だから、ブレない。<br>
+        だから、まとまる。
+      </p>
+    </div>
+</div>
+</section>
+
+<!-- WORKS -->
+<section class="works-section">
+  <span class="s-num reveal">05 — 設計図から始まります。</span>
+  <h2 class="s-heading reveal">
+    なぜこの形か。<br>全部説明できます。
+  </h2>
+  <div class="works-grid reveal">
+    <div class="works-item">
+      <img src="https://3e-design.com/wp-content/uploads/2026/05/src22works_emerigolf.jpg" alt="EMERI GOLF ロゴ設計図">
+      <p class="works-item-label">EMERI GOLF — 2024</p>
+    </div>
+    <div class="works-item">
+      <img src="https://3e-design.com/wp-content/uploads/2026/05/src22works_3edesign.jpg" alt="3EDESIGN ロゴ設計図">
+      <p class="works-item-label">3EDESIGN — 2019</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section">
+  <span class="s-num reveal">07 — 価格について</span>
+  <p class="price-heading reveal">
+    悩んで、設計して、削り続ける。<br>
+    その工程すべてが含まれています。
+  </p>
+  <p class="price-lead reveal">
+    ヒアリングから始まり、コンセプト設計、比率の計算、白黒での検証、カラー展開まで。<br>
+    Illustratorデータでの納品を含む、すべて込みの価格です。
+  </p>
+  <ul class="price-list reveal">
+    <li>
+      <span class="price-name">店舗・サービスロゴ</span>
+      <span class="price-amount">150,000円〜</span>
+    </li>
+    <li>
+      <span class="price-name">コーポレートロゴ</span>
+      <span class="price-amount">300,000円〜</span>
+    </li>
+  </ul>
+  <p class="price-note reveal">
+    修正は無制限です。納得するまでお付き合いします。<br><br>
+    ※ 提案数追加・ガイドライン作成・名刺展開などは別途ご相談ください。<br>
+    ※ 価格はあくまで目安です。内容によって変動する場合があります。
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="reveal">
+    まず、あなたの話を<br>聞かせてください。
+  </h2>
+  <p class="reveal">
+    ぼくは、あなたの2番手になります。<br>
+    「この形じゃなきゃダメだ」と思えるまで<br>
+    一緒に考えます。
+  </p>
+  <a href="mailto:3edesign.info@gmail.com" class="cta-btn reveal">3edesign.info@gmail.com</a>
+</section>
+
+<footer>
+  <span>スリーイーデザイン</span>
+  <span>© 3e-design.com</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
